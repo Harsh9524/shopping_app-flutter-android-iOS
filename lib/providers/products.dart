@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:http/http.dart' as http;
 import './product.dart';
 
 class Products with ChangeNotifier {
@@ -65,6 +66,11 @@ class Products with ChangeNotifier {
   // }
 
   void addProduct(Product product) {
+    const url = 'https://first-project-32a8c.firebaseio.com/products.json';
+    http.post(
+      url,
+      body: product,
+    );
     final newProduct = Product(
       title: product.title,
       description: product.description,
